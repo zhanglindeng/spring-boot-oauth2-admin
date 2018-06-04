@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dzlin.oauth2.admin.mapper.AdminUserMapper">
+
+    <sql id="baseColumns">
+        id, username, password, status
+    </sql>
+
+    <select id="findByUsername" parameterType="String" resultType="AdminUser">
+        select
+        <include refid="baseColumns"/>
+        from admin_user
+        where username = #{username}
+    </select>
+
+</mapper>

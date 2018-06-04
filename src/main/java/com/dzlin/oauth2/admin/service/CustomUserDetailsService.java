@@ -1,7 +1,7 @@
 package com.dzlin.oauth2.admin.service;
 
-import com.dzlin.oauth2.admin.entity.UserEntity;
-import com.dzlin.oauth2.admin.repository.UserRepository;
+import com.dzlin.oauth2.admin.entity.AdminUserEntity;
+import com.dzlin.oauth2.admin.repository.AdminUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,15 +14,15 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private UserRepository userRepository;
+    private AdminUserRepository adminUserRepository;
 
-    public CustomUserDetailsService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public CustomUserDetailsService(AdminUserRepository adminUserRepository) {
+        this.adminUserRepository = adminUserRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = this.userRepository.findByUsername(username);
+        AdminUserEntity user = this.adminUserRepository.findByUsername(username);
         if (user == null) {
 
             this.logger.warn("username " + username);

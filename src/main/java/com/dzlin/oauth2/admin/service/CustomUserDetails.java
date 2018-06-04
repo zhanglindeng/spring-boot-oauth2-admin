@@ -1,6 +1,6 @@
 package com.dzlin.oauth2.admin.service;
 
-import com.dzlin.oauth2.admin.entity.UserEntity;
+import com.dzlin.oauth2.admin.entity.AdminUserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,44 +8,45 @@ import java.util.Collection;
 
 public class CustomUserDetails implements UserDetails {
 
-    private UserEntity userEntity;
+    private AdminUserEntity adminUserEntity;
 
-    public CustomUserDetails(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public CustomUserDetails(AdminUserEntity adminUserEntity) {
+        this.adminUserEntity = adminUserEntity;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.userEntity.getAuthorities();
+        // TODO Admin user authority
+        return null;
     }
 
     @Override
     public String getPassword() {
-        return this.userEntity.getPassword();
+        return this.adminUserEntity.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return this.userEntity.getUsername();
+        return this.adminUserEntity.getUsername();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return !this.userEntity.getAccountExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return !this.userEntity.getAccountLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return !this.userEntity.getCredentialsExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return this.userEntity.getEnabled();
+        return this.adminUserEntity.getStatus() == 1;
     }
 }

@@ -12,6 +12,7 @@
         <typeAlias alias="String" type="java.lang.String"/>
 
         <typeAlias type="com.dzlin.oauth2.admin.entity.UserEntity" alias="User"/>
+        <typeAlias type="com.dzlin.oauth2.admin.entity.AdminUserEntity" alias="AdminUser"/>
         <typeAlias type="com.dzlin.oauth2.admin.entity.AuthorityEntity" alias="Authority"/>
         <typeAlias type="com.dzlin.oauth2.admin.entity.OauthClientDetailsEntity" alias="OauthClientDetailsEntity"/>
     </typeAliases>
